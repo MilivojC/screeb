@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>API</title>
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    </head>
+    <body>
+
+<script>
+
+$(document).ready(function() {
+
+  $.ajax({
+    type: 'POST',
+    url: 'https://firststore.vendhq.com/api/1.0/token',
+    dataType: 'json',
+    accepts: 'application/json', // accepts json response
+    beforeSend: function(req) {
+              req.setRequestHeader("Access-Control-Allow-Origin", "*");
+              },
+    crossDomain: true,
+    contentType: "application/x-www-form-urlencoded", // send as x-www-form-urlencoded
+    data: "code=abc&client_id=abc&client_secret=abc&grant_type=authorization_code&redirect_uri=http://testtesttest.com,
+    success: function(success) {
+      console.log('hello!');
+   },
+    error: function(e) {
+      //called when there is an error
+      console.log('error');
+    },
+  });
+});
+
+</script>
+
+</body>
+</html>
