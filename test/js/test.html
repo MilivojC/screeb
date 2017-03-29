@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Lecture et parsing d'un fichier JSON</title>
+    <style>
+      #zone {
+        width: 300px;
+        height: 315px;
+        border-style: solid;
+        border-width: 3px;
+        border-color: black;
+      }
+    </style>
+  </head>
+  <body>
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+-->
+    <script src="jquery.js"></script>
+    <h2>Lecture et parsing du fichier test.json</h2>
+    <button id="lecture">Lancer la lecture</button>
+    <div id="zone"></div>
+    <script>
+      $(function() {
+        $('#lecture').on('click', function(){
+          $.getJSON('./test.json',function(data){
+            $('#zone').append('Prénom : ' + data.Prenom + '<br>');
+            $('#zone').append('Nom : ' + data.Nom + '<br>');
+            $('#zone').append('Age : ' + data.Age + '<br>');
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
