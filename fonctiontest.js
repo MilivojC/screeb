@@ -1,1 +1,1 @@
-alert('Hello world!');
+console.log('Bienvenue dans Node.js !');
