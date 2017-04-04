@@ -1,0 +1,26 @@
+{
+  "author": "AFM",
+  "name": "demo-chat",
+  "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/naholyr/node-chat-socketio-handshake.git"
+  },
+  "main": "app.js",
+  "engines": {
+    "node": ">= 0.4.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "connect": "^3.6.0",
+    "cookie": "^0.3.1",
+    "cookie-parser": "^1.4.3",
+    "ejs": "^2.5.6",
+    "ejs-locals": "^1.0.2",
+    "express": "^4.15.2",
+    "express-session": "^1.15.2",
+    "session": "^0.1.0",
+    "socket.io": "^1.7.3"
+  },
+  "devDependencies": {}
+}

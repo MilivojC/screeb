@@ -19,15 +19,28 @@
 -->
     <script src="jquery.js"></script>
     <h2>Lecture et parsing du fichier test.json</h2>
-    <button id="lecture">Lancer la lecture</button>
+    <button id="lecture">Vérification du client</button>
     <div id="zone"></div>
     <script>
+      var pseudo = prompt('Quel est votre nom ?');  
       $(function() {
         $('#lecture').on('click', function(){
-          $.getJSON('./test.json',function(data){
-            $('#zone').append('Prénom : ' + data.Prenom + '<br>');
-            $('#zone').append('Nom : ' + data.Nom + '<br>');
-            $('#zone').append('Age : ' + data.Age + '<br>');
+          $.getJSON('tickets.json',function(data){
+              var clients_list = [];
+              for (var o = 0; o <= data.register_sales.length - 1; o++) {
+                clients_list.push(data.register_sales[o].customer_name);
+              };
+              
+              //clients_list.push(data.register_sales[0].customer_name)
+              console.log(clients_list);
+              if (clients_list.indexOf(pseudo) >= 0) {
+              //if (clients_list[0] in clients_list) {
+                  console.log('Vous êtes un client!');
+                  alert('Vous êtes un client!');
+              } else {
+                  console.log('Vous n\'êtes pas encore un client!');
+                  alert('Vous n\'êtes pas encore un client!');
+              };
           });
         });
       });
