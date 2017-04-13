@@ -46,15 +46,15 @@ app.use(cookieParser());
 
 var expiryDate = new Date( Date.now() + 60 * 60 * 1000 ); // 1 hour
 app.use(session({
-  name: 'session',                 // nom de l'ID de session
+  //name: 'session',                 // nom de l'ID de session
   secret: 's3Cur3',                // obligatoire: secret utilisé pour signer le cookie ID de session 
   cookie: { secure: true,          // secures the cookie
-            httpOnly: true,        // ??
+            httpOnly: false,        // ??
             path: '/',             // chemin vers le set-cookie
-            expires: expiryDate,   // date d'expiration du cookie
+           expires: expiryDate,   // date d'expiration du cookie
           },
   resave: true,                     // force la session à re-sauvegarder même si il n'y a pas eu de modif dans la requête
-  saveUninitialized: true           // force une session non initialisée à être enregistrée dans le store
+  saveUninitialized: true,           // force une session non initialisée à être enregistrée dans le store
   })
 );
 
@@ -104,9 +104,7 @@ app.get("/login", function (req, res) {                               // la page
 
 app.post("/login", function (req, res) {                              // post a request to the server
   var options = { "username": req.body.username, "error": null };
-    console.log(options);
   if (!req.body.username) {
-      console.log(req.body.username);
     options.error = "User name is required";                          // demande un username
     res.render("login", options);
   } else if (req.body.username == req.session.username) {             // le user n'a pas changé de nom mais on s'en fout
